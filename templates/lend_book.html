@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>books</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+
+<body>
+    {% include "navbar.html" %}
+    <h1 class="bg-gray-900 text-white text-center text-5xl pt-10 pb-5">Books</h1>
+    <div class="bg-gray-900 w-full text-center mx-auto">
+    </div>
+
+    <div class="flex items-center justify-center min-h-screen bg-gray-900">
+        <div class="col-span-12">
+
+
+            <div class="overflow-auto lg:overflow-visible ">
+                <table class="table text-gray-400 rounded rounded-2xl p-5 border-separate space-y-6 text-sm">
+                    <thead class="bg-gray-800 text-gray-500">
+                        <tr>
+                            <th class="p-3">Book Name</th>
+                            
+                            <th class="p-3 text-left">Category</th>
+                            <th class="p-3 text-left">Author</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for name,category,author in lists %}
+                        
+                        <tr class="bg-gray-800 p-3 rounded rounded-2xl">
+                            <td class="p-3 m-2">{{name}}</td>
+                            
+                            <td class="p-3 m-2">{{category}}</td>
+                            <td class="p-3 m-2">{{author}}</td>
+                            
+                            <td class="p-3 m-2">
+                                <a href="{% url 'lend-book' name %}"> <button type="submit">Lend</button> </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .table {
+            border-spacing: 0 15px;
+        }
+        
+        i {
+            font-size: 1rem !important;
+        }
+        
+        .table tr {
+            border-radius: 20px;
+        }
+        
+        tr td:nth-child(n+11),
+        tr th:nth-child(n+10) {
+            border-radius: 0 .625rem .625rem 0;
+        }
+        
+        tr td:nth-child(1),
+        tr th:nth-child(1) {
+            border-radius: .625rem 0 0 .625rem;
+        }
+    </style>
+</body>
+
+</html>
